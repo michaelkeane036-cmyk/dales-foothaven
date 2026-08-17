@@ -20,3 +20,4 @@ output/
 server-*.log
 server-*.err
 tmp/
+.vercel
