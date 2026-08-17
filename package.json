@@ -1,15 +1,13 @@
-{
-  "name": "slymfit-store",
+﻿{
+  "name": "dales-foothaven-store",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node local-server.js",
     "dev": "node local-server.js",
-    "check": "node --check local-server.js && node --check api/create-checkout-session.js && node --check lib/checkout.js && node --check script.js"
+    "check": "node --check local-server.js && node --check script.js"
   },
   "dependencies": {
-    "dotenv": "^16.4.7",
-    "express": "^4.21.2",
-    "stripe": "^17.5.0"
+    "express": "^4.21.2"
   }
 }
