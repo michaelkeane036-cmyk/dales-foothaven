@@ -3,9 +3,6 @@
    script.js
    ========================================= */
 
-const ADULT_PRICE = 25000;
-const COUPLE_PRICE = 50000;
-const BABY_PRICE = 15000;
 const CART_STORAGE_KEY = 'dales_foothaven_cart_ngn_v1';
 const WHATSAPP_ORDER_NUMBER = '2349028525881';
 const AUDIENCE = {
@@ -15,52 +12,37 @@ const AUDIENCE = {
   baby: ['baby']
 };
 
-const NAMED_PRODUCTS = [
-  ['p1', "Awwal's Slide", '01-awwals-slide.jpg', ADULT_PRICE, 'Custom', '', 'A custom leather slide built for clean daily comfort and personal style.', AUDIENCE.men],
-  ['p2', 'Baby Sandal', '02-baby-sandal.jpg', BABY_PRICE, 'Baby', 'sale', 'A soft baby sandal made for tiny feet, warm days, and easy movement.', AUDIENCE.baby],
-  ['p3', "Blessing's Slide", '03-blessings-slide.jpg', ADULT_PRICE, 'Custom', '', 'A handmade slide with a neat finish for relaxed everyday wear.', AUDIENCE.women],
-  ['p4', "Couple's Pair", '04-couples-pair.jpg', COUPLE_PRICE, 'Pair', 'hot', 'A matching pair for couples who want coordinated comfort with a personal touch.', AUDIENCE.unisex],
-  ['p5', "Dale's Slide", '05-dales-slide.jpg', ADULT_PRICE, 'Signature', 'hot', "A signature Dale's Foothaven slide with a sturdy sole and polished handmade feel.", AUDIENCE.men],
-  ['p6', "Ife's Slide", '06-ifes-slide.jpg', ADULT_PRICE, 'Custom', '', 'A clean custom slide designed for simple styling and everyday ease.', AUDIENCE.women],
-  ['p7', "Tobi's Slide", '07-tobis-slide.jpg', ADULT_PRICE, 'Custom', '', 'A made-to-order slide with soft comfort and a confident casual look.', AUDIENCE.men]
+const PRODUCT_ROWS = [
+  ['p1', 'Awwal’s Slide', '01-awwals-slide.jpg', 14000, 'Custom', '', AUDIENCE.men],
+  ['p2', 'Baby Sandal', '02-baby-sandal.jpg', 10000, 'Baby', 'sale', AUDIENCE.baby],
+  ['p3', 'Blessing’s Slide', '03-blessings-slide.jpg', 9500, 'Custom', '', AUDIENCE.women],
+  ['p4', 'Couple’s Pair', '04-couples-pair.jpg', 24000, 'Pair', 'hot', AUDIENCE.unisex],
+  ['p5', 'Dale’s Slide', '05-dales-slide.jpg', 12000, 'Signature', 'hot', AUDIENCE.women],
+  ['p6', 'Ife’s Slide', '06-ifes-slide.jpg', 9000, 'Custom', '', AUDIENCE.women],
+  ['p7', 'Tobi’s Slide', '07-tobis-slide.jpg', 13500, 'Custom', '', AUDIENCE.men],
+  ['p8', 'Ife’s Slide', '08-custom-slide-08.jpg', 9000, 'Custom', '', AUDIENCE.men],
+  ['p9', 'Oyin’s Slide', '09-custom-slide-09.jpg', 9000, 'Custom', '', AUDIENCE.women],
+  ['p10', 'Diadem’s Slide', '10-img3907.jpg', 9000, 'Custom', '', AUDIENCE.women],
+  ['p11', 'Esty’s Platform', '11-img4253.jpg', 15000, 'Platform', '', AUDIENCE.women],
+  ['p12', 'Maryann’s Platform', '12-img4263.jpg', 15000, 'Platform', '', AUDIENCE.women],
+  ['p13', 'Jummy’s Jean Platform', '13-img4278.jpg', 17000, 'Platform', '', AUDIENCE.women],
+  ['p14', 'Suweba’s Slide', '14-img4294.jpg', 9000, 'Custom', '', AUDIENCE.women],
+  ['p15', 'Dee’s Slide', '15-img4348.jpg', 13500, 'Custom', '', AUDIENCE.men],
+  ['p16', 'Ayo’s Slide', '16-img5099.jpg', 21000, 'Custom', '', AUDIENCE.unisex],
+  ['p17', 'Unisex Slide', '17-img5111.jpg', 18000, 'Unisex', '', AUDIENCE.unisex],
+  ['p18', 'Kelvin’s Slide', '18-img5208.jpg', 21000, 'Custom', '', AUDIENCE.unisex],
+  ['p19', 'Happiness’s Slide', '19-img5240.jpg', 9000, 'Custom', '', AUDIENCE.women],
+  ['p20', 'Foothaven Custom Slide 13', '20-img5244.jpg', 25000, 'Custom', '', AUDIENCE.women],
+  ['p21', 'Nicolette’s Slide', '21-img5569.jpg', 9000, 'Custom', '', AUDIENCE.women],
+  ['p22', 'Debby’s Slide', '22-img5576.jpg', 9000, 'Custom', '', AUDIENCE.women],
+  ['p23', 'Half Shoe', '23-img6094.jpg', 28000, 'Half Shoe', 'hot', AUDIENCE.men],
+  ['p24', 'Half Shoe', '24-img6098.jpg', 28000, 'Half Shoe', 'hot', AUDIENCE.men],
+  ['p25', 'Male Slide', '25-img6103.jpg', 13500, 'Men', '', AUDIENCE.men],
+  ['p26', 'Dee’s Slide In Black', '26-img6261.jpg', 13500, 'Custom', '', AUDIENCE.men],
+  ['p27', 'Joy’s Slide', '27-img6268.jpg', 9000, 'Custom', '', AUDIENCE.women]
 ];
 
-const CUSTOM_FILES = [
-  ['08-custom-slide-08.jpg', AUDIENCE.men],
-  ['09-custom-slide-09.jpg', AUDIENCE.men],
-  ['10-img3907.jpg', AUDIENCE.women],
-  ['11-img4253.jpg', AUDIENCE.unisex],
-  ['12-img4263.jpg', AUDIENCE.unisex],
-  ['13-img4278.jpg', AUDIENCE.men],
-  ['14-img4294.jpg', AUDIENCE.men],
-  ['15-img4348.jpg', AUDIENCE.unisex],
-  ['16-img5099.jpg', AUDIENCE.unisex],
-  ['17-img5111.jpg', AUDIENCE.women],
-  ['18-img5208.jpg', AUDIENCE.women],
-  ['19-img5240.jpg', AUDIENCE.unisex],
-  ['20-img5244.jpg', AUDIENCE.men],
-  ['21-img5569.jpg', AUDIENCE.women],
-  ['22-img5576.jpg', AUDIENCE.women],
-  ['23-img6094.jpg', AUDIENCE.men],
-  ['24-img6098.jpg', AUDIENCE.women],
-  ['25-img6103.jpg', AUDIENCE.women],
-  ['26-img6261.jpg', AUDIENCE.men],
-  ['27-img6268.jpg', AUDIENCE.men]
-];
-
-const PRODUCTS = [
-  ...NAMED_PRODUCTS.map(toProduct),
-  ...CUSTOM_FILES.map(([file, categories], index) => ({
-    id: `p${index + 8}`,
-    name: `Foothaven Custom Slide ${String(index + 1).padStart(2, '0')}`,
-    image: `assets/dales/products/${file}`,
-    price: ADULT_PRICE,
-    badge: 'Custom',
-    badgeClass: '',
-    desc: 'A handcrafted adult slide ready for personalized daily wear.',
-    categories
-  }))
-];
+const PRODUCTS = PRODUCT_ROWS.map(toProduct);
 
 const FEATURED_IDS = ['p4', 'p5', 'p2'];
 let activeCatalogFilter = 'all';
@@ -71,16 +53,44 @@ let currentSlide = 0;
 let slideInterval;
 
 function toProduct(row) {
+  const [id, name, file, price, badge, badgeClass, categories, desc] = row;
+
   return {
-    id: row[0],
-    name: row[1],
-    image: `assets/dales/products/${row[2]}`,
-    price: row[3],
-    badge: row[4],
-    badgeClass: row[5],
-    desc: row[6],
-    categories: row[7]
+    id,
+    name,
+    image: `assets/dales/products/${file}`,
+    price,
+    badge,
+    badgeClass,
+    desc: desc || getProductDescription(name),
+    categories
   };
+}
+
+function getProductDescription(name) {
+  const normalized = name.toLowerCase();
+
+  if (normalized.includes('baby')) {
+    return 'A soft baby sandal made for tiny feet, warm days, and easy movement.';
+  }
+
+  if (normalized.includes('couple')) {
+    return 'A matching pair for coordinated comfort with a personal touch.';
+  }
+
+  if (normalized.includes('platform')) {
+    return 'A handcrafted platform pair with a lifted profile and easy everyday styling.';
+  }
+
+  if (normalized.includes('half shoe')) {
+    return 'A handcrafted half shoe built for a covered look, comfort, and steady daily wear.';
+  }
+
+  if (normalized.includes('unisex')) {
+    return 'A neutral handcrafted slide made for flexible everyday styling.';
+  }
+
+  return 'A handcrafted slide ready for personalized daily wear.';
 }
 
 function getProduct(id) {
@@ -111,6 +121,16 @@ function formatPrice(amount) {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0
   }).format(Number(amount) || 0);
+}
+
+function formatCompactPrice(amount) {
+  const value = Number(amount) || 0;
+
+  if (value >= 1000 && value % 1000 === 0) {
+    return `${value / 1000}k`;
+  }
+
+  return value.toLocaleString('en-NG');
 }
 
 function escapeHtml(value) {
@@ -184,7 +204,9 @@ function matchesCatalogSearch(product) {
     product.desc,
     product.badge,
     product.categories.map(formatCategoryName).join(' '),
-    formatPrice(product.price)
+    formatPrice(product.price),
+    formatCompactPrice(product.price),
+    String(product.price)
   ].join(' ').toLowerCase();
 
   return haystack.includes(query);
