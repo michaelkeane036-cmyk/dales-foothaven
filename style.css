@@ -810,7 +810,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   :root { --nav-height: 76px; }
   .container { padding: 0 28px; }
   .hero { padding: 18px 28px; }
-  .hero-wrapper { min-height: 620px; }
+  .hero-wrapper {
+    min-height: 0;
+    height: clamp(500px, calc(100vh - var(--nav-height) - 36px), 900px);
+  }
+  @supports (height: 100svh) {
+    .hero-wrapper { height: clamp(500px, calc(100svh - var(--nav-height) - 36px), 900px); }
+  }
   .nav { padding: 0 28px; }
   .nav-logo a { font-size: 31px; }
   .brand-logo-img { width: 42px; height: 42px; }
@@ -833,12 +839,21 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .nav-links { display: none; }
   .menu-toggle { display: flex; }
   .hero { padding: 14px 16px; }
-  .hero-wrapper { min-height: 540px; border-radius: var(--radius-lg); }
+  .hero-wrapper {
+    min-height: 0;
+    height: clamp(520px, calc(100vh - var(--nav-height) - 28px), 900px);
+    border-radius: var(--radius-lg);
+  }
+  @supports (height: 100svh) {
+    .hero-wrapper { height: clamp(520px, calc(100svh - var(--nav-height) - 28px), 900px); }
+  }
   .hero-slide-content { padding: 40px 28px 100px; max-width: 500px; }
   .hero-slide-headline { font-size: 46px; }
   .hero-slide-sub { font-size: 14px; max-width: 360px; }
   .hero-indicators { padding: 0 28px 24px; }
   .hero-indicator-label { display: none; }
+  .new-drops { padding: 56px 0 64px; }
+  .new-drops .section-header-row { margin-bottom: 28px; }
   .container { padding: 0 20px; }
   .products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .products-grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
@@ -868,9 +883,17 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .nav-logo a { font-size: 27px; }
   .brand-logo-img { width: 40px; height: 40px; }
   .hero { padding: 12px; }
-  .hero-wrapper { min-height: 500px; }
+  .hero-wrapper {
+    min-height: 0;
+    height: clamp(500px, calc(100vh - var(--nav-height) - 24px), 900px);
+  }
+  @supports (height: 100svh) {
+    .hero-wrapper { height: clamp(500px, calc(100svh - var(--nav-height) - 24px), 900px); }
+  }
   .hero-slide-content { padding: 38px 22px 92px; }
   .hero-slide-headline { font-size: 40px; }
+  .new-drops { padding: 44px 0 56px; }
+  .new-drops .section-header-row { margin-bottom: 24px; }
   .products-grid,
   .products-grid-4,
   .department-block .products-grid-4 {
